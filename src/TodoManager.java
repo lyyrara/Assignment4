@@ -2,17 +2,11 @@ import java.util.Scanner;
 
 
 public class TodoManager {
-    
-    private Task taskManager;
-
-    public TodoManager() {
-        this.taskManager = new Task();
-    }
 
     public static void main(String[] args){
-        TodoManager manager = new TodoManager();
+        
         Scanner scanner = new Scanner(System.in);
-
+        TaskManager taskManager = new TaskManager();
     
         while (true) {
             System.out.println("1. Add a task");
@@ -27,26 +21,35 @@ public class TodoManager {
     
             switch (option) {
                 case 1:
-                    System.out.print("Enter a task: ");
-                    String addtask = scanner.nextLine();
-                    manager.taskManager.addTask(addtask);
+                    System.out.print("Enter a task id: ");
+                    int taskId = scanner.nextInt();
+                    scanner.nextLine(); 
+                    System.out.print("Enter a task title: ");
+                    String taskTitle = scanner.nextLine();
+                    System.out.print("Enter a task text: ");
+                    String taskText = scanner.nextLine();
+                    Task task = new Task(taskId, taskTitle, taskText);
+                    taskManager.addTask(task);
                     break;
                 case 2:
-                    System.out.print("Enter the task name to remove: ");
-                    String delete_task = scanner.nextLine();
-                    manager.taskManager.removeTask(delete_task);
+                    System.out.print("Enter the task id to remove: ");
+                    int remove_id = scanner.nextInt();
+                    taskManager.removeTask(remove_id);
                     break;
                 case 3:
-                    System.out.print("Update task:");
-                    String old_task = scanner.nextLine();
-                    System.out.print("New task:");
-                    String new_task = scanner.nextLine();
-                    manager.taskManager.updateTask(old_task, new_task);
+                    System.out.print("Update task id:");
+                    int idx = scanner.nextInt();
+                    scanner.nextLine(); 
+                    System.out.print("Enter a task title: ");
+                    String Title = scanner.nextLine();
+                    System.out.print("Enter a task text: ");
+                    String Text = scanner.nextLine();
+                    taskManager.updateTask(idx, Title, Text);
                     break;
                 case 4:
-                    System.out.print("Search task:");
-                    String task = scanner.nextLine();
-                    manager.taskManager.searchTask(task);
+                    System.out.print("Search task id:");
+                    int search_id = scanner.nextInt();
+                    taskManager.searchTask(search_id);
                     break;
                 case 0:
                     System.out.println("Exiting...");

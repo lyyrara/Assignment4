@@ -6,7 +6,7 @@ public class TodoManager {
     public static void main(String[] args){
         
         Scanner scanner = new Scanner(System.in);
-        TaskManager taskManager = new TaskManager();
+        TaskService taskService = new TaskService();
     
         while (true) {
             System.out.println("1. Add a task");
@@ -21,35 +21,16 @@ public class TodoManager {
     
             switch (option) {
                 case 1:
-                    System.out.print("Enter a task id: ");
-                    int taskId = scanner.nextInt();
-                    scanner.nextLine(); 
-                    System.out.print("Enter a task title: ");
-                    String taskTitle = scanner.nextLine();
-                    System.out.print("Enter a task text: ");
-                    String taskText = scanner.nextLine();
-                    Task task = new Task(taskId, taskTitle, taskText);
-                    taskManager.addTask(task);
+                    taskService.addTask();
                     break;
                 case 2:
-                    System.out.print("Enter the task id to remove: ");
-                    int remove_id = scanner.nextInt();
-                    taskManager.removeTask(remove_id);
+                    taskService.removeTask();;
                     break;
                 case 3:
-                    System.out.print("Update task id:");
-                    int idx = scanner.nextInt();
-                    scanner.nextLine(); 
-                    System.out.print("Enter a task title: ");
-                    String Title = scanner.nextLine();
-                    System.out.print("Enter a task text: ");
-                    String Text = scanner.nextLine();
-                    taskManager.updateTask(idx, Title, Text);
+                    taskService.updateTask();
                     break;
                 case 4:
-                    System.out.print("Search task id:");
-                    int search_id = scanner.nextInt();
-                    taskManager.searchTask(search_id);
+                    taskService.searchTask();
                     break;
                 case 0:
                     System.out.println("Exiting...");

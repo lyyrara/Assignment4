@@ -26,10 +26,9 @@ public class TaskDAO {
 				break;
 			}
             counter++;
-            if (counter == tasks.length -1) {
+            if (counter == tasks.length) {
 				return false;
 			}
-			counter++;
         }
         printTasks();
         return true;
